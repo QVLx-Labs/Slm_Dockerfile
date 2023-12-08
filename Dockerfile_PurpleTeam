@@ -1,4 +1,4 @@
-# $t@$h     QVLx Labs
+#$t@$h
 
 ARG IMAGENAME
 FROM ubuntu:20.04
@@ -156,3 +156,7 @@ RUN sudo usermod -a -G wireshark root
 RUN sudo setcap 'CAP_NET_RAW+eip CAP_NET_ADMIN+eip' /usr/bin/dumpcap
 RUN sudo chgrp wireshark /usr/bin/dumpcap
 RUN sudo chmod 750 /usr/bin/dumpcap
+
+RUN apt-get purge -y curl wget git snapd && apt-get autoremove -y
+RUN chmod 000 /usr/bin/dpkg
+RUN rm -rf /usr/bin/apt*
